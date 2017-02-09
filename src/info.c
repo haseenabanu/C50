@@ -86,16 +86,19 @@ double TotalInfo(double V[], DiscrValue MinVal, DiscrValue MaxVal)
 {
     DiscrValue	v;
     double	Sum=0.0, TotalCases=0;
+    double alpha=-1.5;
+    double q=1/(alpha-1);
     CaseCount	N;
 
     ForEach(v, MinVal, MaxVal)
     {
 	N = V[v];
 
-	Sum += N * Log(N);
+	Sum +=(1-(Math.pow(N,alpha)));
 	TotalCases += N;
+    
     }
-
+	Sum = q* Sum;
     return TotalCases * Log(TotalCases) - Sum;
 }
 
