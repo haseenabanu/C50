@@ -94,10 +94,11 @@ double TotalInfo(double V[], DiscrValue MinVal, DiscrValue MaxVal)
     {
 	N = V[v];
 
-	Sum +=(1-(Math.pow(N,alpha)));
+	Sum +=(Math.pow(N,alpha));
 	TotalCases += N;
     
     }
+	Sum =1-Sum;
 	Sum = q* Sum;
     return TotalCases * Log(TotalCases) - Sum;
 }
