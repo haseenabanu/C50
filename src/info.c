@@ -34,7 +34,7 @@
 
 #include "defns.h"
 #include "extern.h"
-
+#include "math.h"
 #include "transform.h"
 #include "redefine.h"
 
@@ -94,7 +94,7 @@ double TotalInfo(double V[], DiscrValue MinVal, DiscrValue MaxVal)
     {
 	N = V[v];
 
-	Sum +=(Math.pow(N,alpha));
+	Sum +=(pow(N,alpha));
 	TotalCases += N;
     
     }
