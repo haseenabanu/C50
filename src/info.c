@@ -98,7 +98,7 @@ double TotalInfo(double V[], DiscrValue MinVal, DiscrValue MaxVal)
 	N = V[v];
 	Sum +=(pow(N,alpha));
 	TotalCases += N;
-    	count[i] += (GEnv.Freq[MaxVal][c]-GEnv.Freq[MinVal][c])/TotalCases;
+    	count[i] += (GEnv.Freq[MaxVal][v]-GEnv.Freq[MinVal][v])/TotalCases;
     }
 	count1 += count[i];
 	cf=count[i]/count1;
