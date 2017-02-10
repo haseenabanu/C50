@@ -368,7 +368,7 @@ void Merge(DiscrValue x, DiscrValue y, CaseCount Cases)
     CaseCount	KnownCases=0;
     int		R, C;
     double alpha=0.1;
-	double q=1/(alpha-1);
+    double q = 1/(alpha-1);
     AddBlock(x, y);
 
     ForEach(c, 1, MaxClass)
@@ -431,8 +431,8 @@ void EvaluatePair(DiscrValue x, DiscrValue y, CaseCount Cases)
     ClassNo	c;
     double	Entr=0;
     CaseCount	KnownCases=0, F;
-    double alpha=0.1
-	double q=1/(alpha-1);
+    double alpha=0.1;
+    double q= 1/(alpha-1);
     if ( y < x )
     {
 	c = y;
@@ -451,7 +451,7 @@ void EvaluatePair(DiscrValue x, DiscrValue y, CaseCount Cases)
 	    KnownCases += F;
     }
 	Entr = 1-Entr;
-	Entr =q*Entr;
+	Entr = q*Entr;
     GEnv.MergeEntr[x][y] = Entr + KnownCases * Log(KnownCases);
 }
 
