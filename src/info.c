@@ -88,7 +88,7 @@ double TotalInfo(double V[], DiscrValue MinVal, DiscrValue MaxVal)
     DiscrValue	v;
     double	Sum=0.0, TotalCases=0;
     double alpha=1.50;
-    double q=1/(alpha-1);
+    double q=1/(1-alpha);
     CaseCount	N;
 	double count[20];
 	int i=0;
@@ -103,7 +103,7 @@ double TotalInfo(double V[], DiscrValue MinVal, DiscrValue MaxVal)
     }
 	count1 += count[i];
 	cf=count[i]/count1;
-	Sum =1-Sum;
+	//Sum =1-Sum;
 	Sum = q* Sum;
 	i++;
     return (TotalCases * Log(TotalCases) - Sum)*cf;
