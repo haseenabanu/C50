@@ -84,23 +84,29 @@ double ComputeGain(double BaseInfo, float UnknFrac, DiscrValue MaxVal,
 double TotalInfo(double V[], DiscrValue MinVal, DiscrValue MaxVal)
 /*     ---------  */
 {
+    ClassNo c;
     DiscrValue	v;
     double	Sum=0.0, TotalCases=0;
     double alpha=1.50;
     double q=1/(alpha-1);
     CaseCount	N;
-
+	double count[20];
+	int i=0;
+	double cf=0.0;
+	double count1=0.0;
     ForEach(v, MinVal, MaxVal)
     {
 	N = V[v];
-
 	Sum +=(pow(N,alpha));
 	TotalCases += N;
-    
+    	count[i] += (GEnv.ValFreq[MaxVal][c]-GEnv.ValFreq[MinVal][c])/TotalCases;
     }
+	count1 += count[i];
+	cf=count[i]/count1;
 	Sum =1-Sum;
 	Sum = q* Sum;
-    return TotalCases * Log(TotalCases) - Sum;
+	i++;
+    return (TotalCases * Log(TotalCases) - Sum)*cf;
 }
 
 
