@@ -463,7 +463,7 @@ void EvaluatePair(DiscrValue x, DiscrValue y, CaseCount Cases)
 	    KnownCases += F;
 	    count[i] += (GEnv.Freq[x][c]-GEnv.Freq[y][c]);
     }
-	count[i]=count[i]/TotalCases;
+	count[i]=count[i]/Cases;
 	count1 += count[i];
 	cf=count[i]/count1;
 	//Entr = 1-Entr;
