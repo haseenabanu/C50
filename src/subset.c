@@ -367,8 +367,8 @@ void Merge(DiscrValue x, DiscrValue y, CaseCount Cases)
     double	Entr=0,Entr1=0.0,Entr2=0.0,Entr3=0.0,count1=0.0;
     CaseCount	KnownCases=0;
     int		R, C;
-    double alpha=-0.50;
-    double q = 1/(alpha-1);
+    double alpha=0.25;
+    double q = alpha-1;
     AddBlock(x, y);
 	double count[20];
 	int i=0;
@@ -377,21 +377,19 @@ void Merge(DiscrValue x, DiscrValue y, CaseCount Cases)
     ForEach(c, 1, MaxClass)
     {
 	//Entr -= GEnv.Freq[x][c] * Log(GEnv.Freq[x][c]);
-	Entr += pow(GEnv.Freq[x][c],alpha);
+	Entr1 =1-(pow(GEnv.Freq[x][c],q));
+	Entr2 = Entr1/q;
+	Entr3 -= (pow(GEnv.Freq[x][c],alpha)) * Entr2;
 	KnownCases += GEnv.Freq[x][c];
-	count[i] += (GEnv.Freq[x][c]-GEnv.Freq[y][c]);
-	    i++;
+	//count[i] += (GEnv.Freq[x][c]-GEnv.Freq[y][c]);
     }
-	if(count[i]<0)
+	/*if(count[i]<0)
 	{
 		count[i] = -1*count[i];
 	}
 	count[i] /= Cases;	
-	//count1 += count[i];
-	Entr1 = 1-Entr;
-	Entr2 = q*Entr1;
-	Entr3 = Entr2 * count[i];
-	
+	//count1 += count[i];*/
+	i++;
     GEnv.SubsetInfo[x] = - GEnv.ValFreq[x] * Log(GEnv.ValFreq[x] / Cases);
     GEnv.SubsetEntr[x] = Entr3 + (KnownCases * Log(KnownCases));
 
@@ -444,8 +442,8 @@ void EvaluatePair(DiscrValue x, DiscrValue y, CaseCount Cases)
     ClassNo	c;
     double	Entr=0,Entr1=0.0,Entr2=0.0,Entr3=0.0,count1=0.0;
     CaseCount	KnownCases=0, F;
-    double alpha=-0.50;
-    double q= 1/(alpha-1);
+    double alpha=0.25;
+    double q= alpha-1;
 	double count[20];
 	int i=0;
 	//double cf=0.0;
@@ -464,22 +462,20 @@ void EvaluatePair(DiscrValue x, DiscrValue y, CaseCount Cases)
     {
 	F = GEnv.Freq[x][c] + GEnv.Freq[y][c];
 	//Entr -= F * Log(F);
-	Entr += pow(F,alpha);
-	    KnownCases += F;
-	    count[i] += (GEnv.Freq[x][c]-GEnv.Freq[y][c]);
-	    i++;
+	Entr1 =1-(pow(F,q));
+	Entr2 = Entr1/q;
+	Entr3 -= (pow(F,alpha)) * Entr2;
+	KnownCases += F;
+	   // count[i] += (GEnv.Freq[x][c]-GEnv.Freq[y][c]);	    
     }
-	if(count[i]<0)
+	/*if(count[i]<0)
 	{
 		count[i] = -1*count[i];
 	}
 	count[i] /= Cases;
 	count1 += count[i];
-	//cf=count[i]/count1;
-	Entr1 = 1-Entr;
-	Entr2 = q*Entr1;
-	Entr3 = Entr2 *count[i];
-	
+	//cf=count[i]/count1;*/
+	i++;
     GEnv.MergeEntr[x][y] = Entr3 +( KnownCases * Log(KnownCases));
 }
 
