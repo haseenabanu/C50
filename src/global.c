@@ -120,9 +120,7 @@ DataRec		*Case=0;	/* data cases */
 DataRec		*SaveCase=0;
 
 String		FileStem="undefined";
-double count1=0.0;
-int i;
-double count[20];
+
 /*************************************************************************/
 /*									 */
 /*		Trees							 */
