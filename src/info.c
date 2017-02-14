@@ -105,7 +105,7 @@ double TotalInfo(double V[], DiscrValue MinVal, DiscrValue MaxVal)
 	{
 		count[i] = -1*count[i];
 	}
-	count[i] /= MaxAttVal;
+	count[i] /= TotalCases;
 	//count1 += count[i];
 	//cf=count[i]/count1;
 	Sum1 =1-Sum;
