@@ -89,7 +89,7 @@ double cf=0.0;
 int i=0;
     DiscrValue	v,x,y;
     double	Sum=0.0, TotalCases=0,Sum1=0.0,Sum2=0.0,Sum3=0.0;
-    double alpha=-0.25;
+    double alpha=-0.50;
     double q=1/(alpha-1);
     CaseCount	N;
     ForEach(v, MinVal, MaxVal)
