@@ -88,30 +88,28 @@ double count1=0.0;
 double cf=0.0;
 int i=0;
     DiscrValue	v,x,y;
-    double	Sum=0.0, TotalCases=0,Sum1=0.0,Sum2=0.0,Sum3=0.0;
-    double alpha=-0.50;
-    double q=1/(alpha-1);
+    double	Sum=0.0, Sum1=0.0,Sum2=0.0,TotalCases=0,Sum1=0.0,Sum2=0.0,Sum3=0.0;
+    double alpha=0.25;
+    double q= alpha-1;
     CaseCount	N;
     ForEach(v, MinVal, MaxVal)
     {
 	N = V[v];
-	Sum +=(pow(N,alpha));
+	Sum1 =1-(pow(N,q));
+	Sum2 = Sum1/q;
+	Sum3 -= (pow(N,alpha)) * Sum2;
 	TotalCases += N;
-    	count[i] += (GEnv.Freq[x][v]-GEnv.Freq[y][v]);
-	    i++;
+    	//count[i] += (GEnv.Freq[x][v]-GEnv.Freq[y][v]);
     }
-	if(count[i]<0)
+	/*if(count[i]<0)
 	{
 		count[i] = -1*count[i];
 	}
 	count[i] /= TotalCases;
 	//count1 += count[i];
-	//cf=count[i]/count1;
-	Sum1 =1-Sum;
-	Sum2 = q* Sum1;
-	Sum3 = Sum2*count[i];
+	//cf=count[i]/count1;*/	
 	i++;
-    return TotalCases*Log(TotalCases) - Sum3;
+    return TotalCases*Log(TotalCases) + Sum3;
 }
 
 
