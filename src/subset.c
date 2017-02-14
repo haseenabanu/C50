@@ -385,7 +385,7 @@ void Merge(DiscrValue x, DiscrValue y, CaseCount Cases)
 	{
 		count[i] = -1*count[i];
 	}
-	count[i] /= MaxAttVal;
+	count[i] /= Cases;
 	//count1 += count[i];
 	Entr1 = 1-Entr;
 	Entr2 = q*Entr1;
@@ -471,7 +471,7 @@ void EvaluatePair(DiscrValue x, DiscrValue y, CaseCount Cases)
 	{
 		count[i] = -1*count[i];
 	}
-	count[i] /= MaxAttVal;
+	count[i] /= Cases;
 	//count1 += count[i];
 	//cf=count[i]/count1;
 	Entr1 = 1-Entr;
