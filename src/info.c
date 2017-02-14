@@ -91,8 +91,6 @@ double TotalInfo(double V[], DiscrValue MinVal, DiscrValue MaxVal)
     double alpha=-0.25;
     double q=1/(alpha-1);
     CaseCount	N;
-	//double cf=0.0;
-	//double count1=0.0;
     ForEach(v, MinVal, MaxVal)
     {
 	N = V[v];
