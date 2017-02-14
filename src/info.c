@@ -112,7 +112,7 @@ double TotalInfo(double V[], DiscrValue MinVal, DiscrValue MaxVal)
 	Sum2 = q* Sum1;
 	Sum3 = Sum2*count[i];
 	i++;
-    return q*(pow(TotalCases,alpha)) - Sum3;
+    return TotalCases*Log(TotalCases) - Sum3;
 }
 
 
