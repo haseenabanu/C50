@@ -43,7 +43,10 @@
 /*	Given Freq[][] and ValFreq[], compute the information gain.	 */
 /*									 */
 /*************************************************************************/
-	
+double count[20];
+double count1=0.0;
+double cf=0.0;
+int i=0;	
 double ComputeGain(double BaseInfo, float UnknFrac, DiscrValue MaxVal,
 		   CaseCount TotalCases)
 /*     -----------  */
@@ -71,7 +74,6 @@ double ComputeGain(double BaseInfo, float UnknFrac, DiscrValue MaxVal,
 	     (1 - UnknFrac) * ((BaseInfo*cf) - ThisInfo) );
 
 }
-
 
 
 /*************************************************************************/
