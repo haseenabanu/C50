@@ -43,10 +43,7 @@
 /*	Given Freq[][] and ValFreq[], compute the information gain.	 */
 /*									 */
 /*************************************************************************/
-double count[20];
-double count1=0.0;
-double cf=0.0;
-int i=0;	
+	
 double ComputeGain(double BaseInfo, float UnknFrac, DiscrValue MaxVal,
 		   CaseCount TotalCases)
 /*     -----------  */
@@ -66,12 +63,12 @@ double ComputeGain(double BaseInfo, float UnknFrac, DiscrValue MaxVal,
 	ThisInfo += TotalInfo(GEnv.Freq[v], 1, MaxClass);
     }
     ThisInfo /= TotalCases;
-	cf= count[i]/count1;
-	i++;
+	//cf= count[i]/count1;
+	//i++;
     /*  Set the gain in information for all cases, adjusted for unknowns  */
 
-    return ( BaseInfo <= ThisInfo ? 0.0 :
-	     (1 - UnknFrac) * ((BaseInfo*cf) - ThisInfo) );
+  return ( BaseInfo <= ThisInfo ? 0.0 :
+	     (1 - UnknFrac) * ((BaseInfo) - ThisInfo) );
 
 }
 
@@ -86,6 +83,10 @@ double ComputeGain(double BaseInfo, float UnknFrac, DiscrValue MaxVal,
 double TotalInfo(double V[], DiscrValue MinVal, DiscrValue MaxVal)
 /*     ---------  */
 {
+	double count[20];
+double count1=0.0;
+double cf=0.0;
+int i=0;
     DiscrValue	v,x,y;
     double	Sum=0.0, TotalCases=0,Sum1=0.0,Sum2=0.0,Sum3=0.0;
     double alpha=-0.25;
@@ -109,7 +110,7 @@ double TotalInfo(double V[], DiscrValue MinVal, DiscrValue MaxVal)
 	Sum2 = q* Sum1;
 	Sum3 = Sum2*count[i];
 	i++;
-    return TotalCases*Log(TotalCases) - Sum2;
+    return TotalCases*Log(TotalCases) - Sum3;
 }
 
 
