@@ -98,13 +98,14 @@ int i=0;
 	Sum +=(pow(N,alpha));
 	TotalCases += N;
     	count[i] += (GEnv.Freq[x][v]-GEnv.Freq[y][v]);
+	    i++;
     }
 	if(count[i]<0)
 	{
 		count[i] = -1*count[i];
 	}
 	count[i] /= TotalCases;
-	count1 += count[i];
+	//count1 += count[i];
 	//cf=count[i]/count1;
 	Sum1 =1-Sum;
 	Sum2 = q* Sum1;
