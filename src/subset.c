@@ -367,7 +367,7 @@ void Merge(DiscrValue x, DiscrValue y, CaseCount Cases)
     double	Entr=0,Entr1=0.0,Entr2=0.0,Entr3=0.0;
     CaseCount	KnownCases=0;
     int		R, C;
-    double alpha=-0.85;
+    double alpha=-0.50;
     double q = 1/(alpha-1);
     AddBlock(x, y);
 	double count[20];
@@ -385,7 +385,7 @@ void Merge(DiscrValue x, DiscrValue y, CaseCount Cases)
 	{
 		count[i] = -1*count[i];
 	}
-	count[i] /= Cases;
+	count[i] /= MaxAttVal;
 	//count1 += count[i];
 	Entr1 = 1-Entr;
 	Entr2 = q*Entr1;
@@ -443,7 +443,7 @@ void EvaluatePair(DiscrValue x, DiscrValue y, CaseCount Cases)
     ClassNo	c;
     double	Entr=0,Entr1=0.0,Entr2=0.0,Entr3=0.0;
     CaseCount	KnownCases=0, F;
-    double alpha=-0.85;
+    double alpha=-0.50;
     double q= 1/(alpha-1);
 	double count[20];
 	int i=0;
@@ -471,7 +471,7 @@ void EvaluatePair(DiscrValue x, DiscrValue y, CaseCount Cases)
 	{
 		count[i] = -1*count[i];
 	}
-	count[i] /= Cases;
+	count[i] /= MaxAttVal;
 	//count1 += count[i];
 	//cf=count[i]/count1;
 	Entr1 = 1-Entr;
