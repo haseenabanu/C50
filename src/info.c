@@ -71,7 +71,7 @@ double ComputeGain(double BaseInfo, float UnknFrac, DiscrValue MaxVal,
     /*  Set the gain in information for all cases, adjusted for unknowns  */
 
   return ( BaseInfo <= ThisInfo ? 0.0 :
-	     (1 - UnknFrac) * (BaseInfo - (ThisInfo*cf));
+	     (1 - UnknFrac) * (BaseInfo - (ThisInfo*cf)));
 
 }
 
@@ -88,7 +88,7 @@ double TotalInfo(double V[], DiscrValue MinVal, DiscrValue MaxVal)
 {
 	
     DiscrValue	v;//x,y
-    double	Sum=0.0,TotalCases=0,Sum1=0.0,Sum2=0.0,Sum3=0.0;
+    double TotalCases=0,Sum1=0.0,Sum2=0.0,Sum3=0.0;
     double alpha=0.25;
     double q= alpha-1;
     CaseCount	N;
