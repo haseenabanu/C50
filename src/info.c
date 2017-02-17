@@ -90,7 +90,7 @@ double TotalInfo(double V[], DiscrValue MinVal, DiscrValue MaxVal)
     DiscrValue	v;//x,y
     double TotalCases=0,Sum1=0.0,Sum2=0.0,Sum3=0.0;
     double alpha=-1.25;
-    double q= alpha-1;
+    double q= 1/(1-alpha);
     CaseCount	N;
     ForEach(v, MinVal, MaxVal)
     {
