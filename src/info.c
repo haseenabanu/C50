@@ -106,7 +106,7 @@ double TotalInfo(double V[], DiscrValue MinVal, DiscrValue MaxVal)
 	}
 	//count[i] /= TotalCases;
 	//count1 += count[i];
-	Sum1 = count[i] *Sum1;
+	//Sum1 = count[i] *Sum1;
 	//cf=count[i]/count1;
 	i++;
     return TotalCases*Log(TotalCases) - Sum1;
