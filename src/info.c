@@ -66,12 +66,12 @@ double ComputeGain(double BaseInfo, float UnknFrac, DiscrValue MaxVal,
 	ThisInfo += TotalInfo(GEnv.Freq[v], 1, MaxClass);
     }
     ThisInfo /= TotalCases;
-	cf= count[i]/count1;
-	i++;
+	//cf= count[i]/count1;
+	//i++;
     /*  Set the gain in information for all cases, adjusted for unknowns  */
 
   return ( BaseInfo <= ThisInfo ? 0.0 :
-	     (1 - UnknFrac) * (BaseInfo - (ThisInfo*cf)));
+	     (1 - UnknFrac) * (BaseInfo - (ThisInfo)));
 
 }
 
