@@ -364,7 +364,7 @@ void Merge(DiscrValue x, DiscrValue y, CaseCount Cases)
 /*   -----  */
 {
     ClassNo	c;
-    double	Entr1=0.0,Entr2=0.0,Entr3=0.0,count1=0.0;
+    double	Entr1=0.0,count1=0.0;
     CaseCount	KnownCases=0;
     int		R, C;
     double alpha=-1.25;
@@ -376,7 +376,7 @@ void Merge(DiscrValue x, DiscrValue y, CaseCount Cases)
     ForEach(c, 1, MaxClass)
     {
 	//Entr -= GEnv.Freq[x][c] * Log(GEnv.Freq[x][c]);
-	Entr1 +=pow(GEnv.Freq[x][c],alpha))-1;
+	Entr1 +=(pow(GEnv.Freq[x][c],alpha))-1;
 	KnownCases += GEnv.Freq[x][c];
 	count[i] += (GEnv.Freq[x][c]-GEnv.Freq[y][c]);
     }
