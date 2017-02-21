@@ -380,11 +380,11 @@ void Merge(DiscrValue x, DiscrValue y, CaseCount Cases)
     ForEach(c, 1, MaxClass)
     {
 	//Entr -= GEnv.Freq[x][c] * Log(GEnv.Freq[x][c]);
-	Entr1 +=(pow(GEnv.Freq[x][c],alpha));
+	Entr1 +=(pow(GEnv.Freq[x][c],alpha))-1;
 	KnownCases += GEnv.Freq[x][c];
 	count[i] += (GEnv.Freq[x][c]-GEnv.Freq[y][c]);
     }
-	Entr1 = Entr1 -1;
+	//Entr1 = Entr1 -1;
 	Entr1 *= q;
 	/*if(count[i]<0)
 	{
@@ -465,7 +465,7 @@ void EvaluatePair(DiscrValue x, DiscrValue y, CaseCount Cases)
     {
 	F = GEnv.Freq[x][c] + GEnv.Freq[y][c];
 	//Entr -= F * Log(F);
-	Entr1 +=(pow(F,alpha));	
+	Entr1 +=(pow(F,alpha))-1;	
 	KnownCases += F;
 	    count[i] += (GEnv.Freq[x][c]-GEnv.Freq[y][c]);	    
     }
@@ -476,7 +476,7 @@ void EvaluatePair(DiscrValue x, DiscrValue y, CaseCount Cases)
 	//count[i] /= Cases;
 	//count1 += count[i];
 	//cf=count[i]/count1;*/
-	Entr1 = Entr1 -1;
+	//Entr1 = Entr1 -1;
 	Entr1 *= q;
 	//Entr1 *= count[i];
 	i++;
