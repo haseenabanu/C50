@@ -53,7 +53,8 @@ double ComputeGain(double BaseInfo, float UnknFrac, DiscrValue MaxVal,
 {
     DiscrValue	v;
     double	ThisInfo=0.0;
-
+double alpha=1.25;
+	double q= 1/(1-alpha);
     /*  Check whether all values are unknown or the same  */
 
     if ( ! TotalCases ) return None;
@@ -66,6 +67,8 @@ double ComputeGain(double BaseInfo, float UnknFrac, DiscrValue MaxVal,
 	ThisInfo += TotalInfo(GEnv.Freq[v], 1, MaxClass);
     }
     ThisInfo /= TotalCases;
+	ThisInfo = ThisInfo- 1;
+	ThisInfo = ThisInfo * q;
 	//cf= count[i]/count1;
 	//i++;
     /*  Set the gain in information for all cases, adjusted for unknowns  */
@@ -95,11 +98,11 @@ double TotalInfo(double V[], DiscrValue MinVal, DiscrValue MaxVal)
     ForEach(v, MinVal, MaxVal)
     {
 	N = V[v];
-	Sum1 +=(pow(N,alpha))-1;
+	Sum1 +=(pow(N,alpha));
 	TotalCases += N;
     	//count[i] += (GEnv.Freq[x][v]-GEnv.Freq[y][v]);
     }
-	//Sum1 = Sum1 -1;
+	Sum1 = Sum1 -1;
 	Sum1 *= q;
 	/*if(count[i]<0)
 	{
@@ -117,7 +120,7 @@ double TotalInfo(double V[], DiscrValue MinVal, DiscrValue MaxVal)
 
 /*************************************************************************/
 /*									 */
-/*	Print distribution table for given attribute			 */
+/*	Print distribution tale for given attribute			 */
 /*									 */
 /*************************************************************************/
 
