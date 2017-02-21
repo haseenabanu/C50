@@ -33,7 +33,7 @@
 
 #include "defns.h"
 #include "extern.h"
-
+#include "math.h"
 #include "transform.h"
 #include "redefine.h"
 #define q 1.25
