@@ -38,7 +38,7 @@
 #include "redefine.h"
 #define q 1.25
 #define alpha 1/(1-q)
-#define	PartInfo(n) alpha * ((((pow(n,q))/GEnv.Cases)-1)
+#define	PartInfo(n)  ((((pow(n,q))/GEnv.Cases)-1)
 
 
 /*************************************************************************/
