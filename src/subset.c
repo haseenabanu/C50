@@ -245,7 +245,10 @@ void EvalSubset(Attribute Att, CaseCount Cases)
 	GEnv.SubsetInfo[V1] = ((pow(GEnv.ValFreq[V1],alpha))/ Cases);
 	GEnv.SubsetEntr[V1] = TotalInfo(GEnv.Freq[V1], 1, MaxClass);
     }
-
+GEnv.SubsetInfo[V1]= GEnv.SubsetInfo[V1]-1;
+	GEnv.SubsetInfo[V1]= GEnv.SubsetInfo[V1]*q;
+	GEnv.SubsetEntr[V1] =GEnv.SubsetEntr[V1]-1;
+	GEnv.SubsetEntr[V1] = GEnv.SubsetEntr[V1]*q;
     ForEach(V1, First, GEnv.Blocks-1)
     {
 	ForEach(V2, V1+1, GEnv.Blocks)
@@ -384,7 +387,7 @@ void Merge(DiscrValue x, DiscrValue y, CaseCount Cases)
 	KnownCases += GEnv.Freq[x][c];
 	count[i] += (GEnv.Freq[x][c]-GEnv.Freq[y][c]);
     }
-	//Entr1 = Entr1 -1;
+	Entr1 = Entr1 -1;
 	Entr1 *= q;
 	/*if(count[i]<0)
 	{
@@ -412,7 +415,18 @@ void Merge(DiscrValue x, DiscrValue y, CaseCount Cases)
 	    GEnv.MergeEntr[R][C] = GEnv.MergeEntr[R+1][C];
 	}
     }
-
+GEnv.SubsetInfo[R] =GEnv.SubsetInfo[R]-1;
+	GEnv.SubsetInfo[R]= GEnv.SubsetInfo[R]*q;
+	
+	GEnv.SubsetEntr[R]  =GEnv.SubsetEntr[R] -1;
+	GEnv.SubsetEntr[R] =GEnv.SubsetEntr[R] *q;
+	
+	GEnv.MergeInfo[R][C] =GEnv.MergeInfo[R][C]-1;
+	GEnv.MergeInfo[R][C]=GEnv.MergeInfo[R][C]*q;
+	
+	GEnv.MergeEntr[R][C] =GEnv.MergeEntr[R][C] -1;
+	GEnv.MergeEntr[R][C] = GEnv.MergeEntr[R][C]*q;
+	
     ForEach(C, y, GEnv.Blocks-1)
     {
 	ForEach(R, 1, GEnv.Blocks-1)
@@ -421,6 +435,10 @@ void Merge(DiscrValue x, DiscrValue y, CaseCount Cases)
 	    GEnv.MergeEntr[R][C] = GEnv.MergeEntr[R][C+1];
 	}
     }
+	  GEnv.MergeInfo[R][C] =  GEnv.MergeInfo[R][C]-1;
+	  GEnv.MergeInfo[R][C]=   GEnv.MergeInfo[R][C]*q;
+	 GEnv.MergeEntr[R][C] = GEnv.MergeEntr[R][C] -1;
+	 GEnv.MergeEntr[R][C] = GEnv.MergeEntr[R][C]*q;
     GEnv.Blocks--;
 
     /*  Update information for newly-merged block  */
@@ -465,7 +483,7 @@ void EvaluatePair(DiscrValue x, DiscrValue y, CaseCount Cases)
     {
 	F = GEnv.Freq[x][c] + GEnv.Freq[y][c];
 	//Entr -= F * Log(F);
-	Entr1 +=(pow(F,alpha))-1;	
+	Entr1 +=(pow(F,alpha));	
 	KnownCases += F;
 	    count[i] += (GEnv.Freq[x][c]-GEnv.Freq[y][c]);	    
     }
@@ -476,7 +494,7 @@ void EvaluatePair(DiscrValue x, DiscrValue y, CaseCount Cases)
 	//count[i] /= Cases;
 	//count1 += count[i];
 	//cf=count[i]/count1;*/
-	//Entr1 = Entr1 -1;
+	Entr1 = Entr1 -1;
 	Entr1 *= q;
 	//Entr1 *= count[i];
 	i++;
