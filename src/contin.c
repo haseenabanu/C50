@@ -144,8 +144,8 @@ void EvalContinuousAtt(Attribute Att, CaseNo Fp, CaseNo Lp)
 		    BestI     = i;
 
 		    BestInfo = (GEnv.FixedSplitInfo
-				+ PartInfo(GEnv.LowCases)
-				+ PartInfo(GEnv.ApplicCases - GEnv.LowCases))
+				+alpha *( PartInfo(GEnv.LowCases)-1)
+				+alpha *( PartInfo(GEnv.ApplicCases - GEnv.LowCases)-1))
 			       / GEnv.Cases;
 		}
 
@@ -280,8 +280,8 @@ void EstimateMaxGR(Attribute Att, CaseNo Fp, CaseNo Lp)
 			 + TotalInfo(GEnv.Freq[3], 1, MaxClass);
 
 		SplitInfo = (GEnv.FixedSplitInfo
-			    + PartInfo(GEnv.LowCases)
-			    + PartInfo(GEnv.ApplicCases - GEnv.LowCases)) / GEnv.Cases;
+			    +alpha*( PartInfo(GEnv.LowCases)-1)
+			    + alpha *(PartInfo(GEnv.ApplicCases - GEnv.LowCases)-1)) / GEnv.Cases;
 
 		ThisGain = (1 - GEnv.UnknownRate) *
 			   (GEnv.BaseInfo - (GEnv.NAInfo + LHInfo) / GEnv.KnownCases);
@@ -380,7 +380,7 @@ void PrepareForContin(Attribute Att, CaseNo Fp, CaseNo Lp)
 	}
 
 	GEnv.NAInfo = TotalInfo(GEnv.Freq[1], 1, MaxClass);
-	GEnv.FixedSplitInfo = PartInfo(GEnv.ValFreq[0]) + PartInfo(GEnv.ValFreq[1]);
+	GEnv.FixedSplitInfo = alpha *(PartInfo(GEnv.ValFreq[0])-1) + alpha *(PartInfo(GEnv.ValFreq[1])-1);
 
 	Verbosity(3, PrintDistribution(Att, 0, 1, GEnv.Freq, GEnv.ValFreq, true))
     }
