@@ -95,10 +95,11 @@ double TotalInfo(double V[], DiscrValue MinVal, DiscrValue MaxVal)
     ForEach(v, MinVal, MaxVal)
     {
 	N = V[v];
-	Sum1 +=(pow(N,alpha))-1;
+	Sum1 +=(pow(N,alpha));
 	TotalCases += N;
     	//count[i] += (GEnv.Freq[x][v]-GEnv.Freq[y][v]);
     }
+	Sum1 = Sum1 -1;
 	Sum1 *= q;
 	/*if(count[i]<0)
 	{
@@ -109,7 +110,7 @@ double TotalInfo(double V[], DiscrValue MinVal, DiscrValue MaxVal)
 	//Sum1 = count[i] *Sum1;
 	//cf=count[i]/count1;
 	i++;
-    return TotalCases*Log(TotalCases) - Sum1;
+    return pow(TotalCases,alpha) + Sum1;
 }
 
 
